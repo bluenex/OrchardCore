@@ -7,25 +7,25 @@ function confirmDialog(title, message, handler) {
         message = $('#confirmRemoveModalMetadata').data('message');
     }
 
-    $(`<div id="confirmRemoveModal" class="modal" tabindex="-1" role="dialog">
-        <div class="modal-dialog modal-dialog-centered" role="document">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title">`+ title + `</h5>
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>`+ message + `</p>
-                </div>
-                <div class="modal-footer">
-                    <button id="modalOkButton" type="button" class="btn btn-danger">`+ $('#confirmRemoveModalMetadata').data('ok') + `</button>
-                    <button id="modalCancelButton" type="button" class="btn btn-secondary" data-dismiss="modal">`+ $('#confirmRemoveModalMetadata').data('cancel') + `</button>
-                </div>
-            </div>
-        </div>
-    </div>`).appendTo("body");
+    $('<div id="confirmRemoveModal" class="modal" tabindex="-1" role="dialog">\
+        <div class="modal-dialog modal-dialog-centered" role="document">\
+            <div class="modal-content">\
+                <div class="modal-header">\
+                    <h5 class="modal-title">'+ title + '</h5>\
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">\
+                        <span aria-hidden="true">&times;</span>\
+                    </button>\
+                </div>\
+                <div class="modal-body">\
+                    <p'+ message + '</p>\
+                </div>\
+                <div class="modal-footer">\
+                    <button id="modalOkButton" type="button" class="btn btn-danger">'+ $('#confirmRemoveModalMetadata').data('ok') + '</button>\
+                    <button id="modalCancelButton" type="button" class="btn btn-secondary" data-dismiss="modal">'+ $('#confirmRemoveModalMetadata').data('cancel') + '</button>\
+                </div>\
+            </div>\
+        </div>\
+    </div>').appendTo("body");
     $("#confirmRemoveModal").modal({
         backdrop: 'static',
         keyboard: false
@@ -59,7 +59,7 @@ $(function () {
         // use a custom message if its set in data-message
         var title = $(this).data('title');
         var message = $(this).data('message');
-        confirmDialog(title, message, r => {
+        confirmDialog(title, message, function(r) {
             if (r) {
                 var url = $(this).attr('href');
                 if (url == undefined) {
@@ -101,7 +101,7 @@ $(function () {
             var unsafeUrlPrompt = _this.data("unsafe-url");
 
             if (unsafeUrlPrompt && unsafeUrlPrompt.length > 0) {
-                confirmDialog(title, unsafeUrlPrompt, resp => {
+                confirmDialog(title, unsafeUrlPrompt, function(resp) {
                     if (resp) {
                         form.submit();
                     }
@@ -114,7 +114,7 @@ $(function () {
                 // use a custom message if its set in data-message
                 var title = $(this).data('title');
                 var message = $(this).data('message');
-                confirmDialog(title, message, r => {
+                confirmDialog(title, message, function(r) {
                     if (r) {
                         form.submit();
                     }
